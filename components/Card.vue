@@ -57,7 +57,8 @@ const props = defineProps({
         <div class="poster w-100 h-100">
             <img
                 class="w-100 h-100"
-                src="https://image.tmdb.org/t/p/original/pIkRyD18kl4FhoCNQuWxWu5cBLM.jpg"
+                :src="`https://image.tmdb.org/t/p/original${path}`"
+                loading="lazy"
             />
         </div>
     </div>
@@ -69,14 +70,14 @@ const props = defineProps({
 .wrapper {
     color: white;
     overflow: hidden;
-    transition: 0.4s;
+    transition: 0.7s;
 
     //hovering animation
     &:hover
         *:not( h5, span, p,.infoCard, .stats, .overview, .overview
             > div) {
-        transition: 0.4s;
-        transform: translateY(310px);
+        transition: 0.7s;
+        transform: translateY(400px);
         border-radius: 0 5px 5px 0;
     }
     .infoCard {
@@ -91,8 +92,9 @@ const props = defineProps({
         // overflow: hidden;
 
         .stats {
-            grid-template-columns: repeat(2, 50%);
+            grid-template-columns: 40% 60%;
             grid-template-rows: repeat(3, 1fr);
+            // column-gap:.5rem ;
             :nth-child(odd) {
                 color: $movInfo;
                 font-weight: bold;
@@ -106,7 +108,6 @@ const props = defineProps({
 
         .overview {
             overflow: hidden;
-
             //title and rating
             div {
                 grid-template-columns: repeat(2, 50%);
@@ -121,16 +122,16 @@ const props = defineProps({
         grid-area: 1 / 1;
         align-self: start;
         z-index: 1000;
-        transition: 0.5s;
+        transition: 0.7s;
         cursor: pointer;
         // display: none;
 
         img {
             border-radius: 5px;
-            transition: 0.5s;
+            transition: 0.7s;
             &:hover {
                 border-radius: 5px 0 0 5px;
-                transition: 0.5s;
+                transition: 0.7s;
             }
         }
     }
