@@ -3,7 +3,7 @@ const props = defineProps(["text"]);
 </script>
 
 <template>
-    <button class="btn rounded-pill fs-6 btn">{{ text }}</button>
+    <button class="btn rounded-pill fw-bold fs-6">{{ text }}</button>
 </template>
 
 <style lang="scss" scoped>

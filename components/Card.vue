@@ -33,8 +33,8 @@ const props = defineProps({
 });
 </script>
 <template>
-    <div class="wrapper d-grid w-75 h-100">
-        <div class="infoCard w-25 h-100">
+    <div class="wrapper d-grid w-100 h-100">
+        <div class="infoCard w-100 h-100">
             <h5 class="text-center">{{ title }}</h5>
             <div class="stats d-grid">
                 <span>Release:</span>
@@ -54,7 +54,7 @@ const props = defineProps({
                 </p>
             </div>
         </div>
-        <div class="poster w-25 h-100">
+        <div class="poster w-100 h-100">
             <img
                 class="w-100 h-100"
                 src="https://image.tmdb.org/t/p/original/pIkRyD18kl4FhoCNQuWxWu5cBLM.jpg"
@@ -69,12 +69,14 @@ const props = defineProps({
 .wrapper {
     color: white;
     overflow: hidden;
+    transition: 0.4s;
+
     //hovering animation
     &:hover
-        *:not(:hover, h5, span, p, .stats, .overview, .overview
-            > div, .poster, img) {
-        transition: 0.3s;
-        transform: translateX(255px);
+        *:not( h5, span, p,.infoCard, .stats, .overview, .overview
+            > div) {
+        transition: 0.4s;
+        transform: translateY(310px);
         border-radius: 0 5px 5px 0;
     }
     .infoCard {
@@ -85,9 +87,8 @@ const props = defineProps({
         grid-template-rows: 20% 40% 40%;
         padding: 1rem;
         background-color: #252d6f;
-        transition: 0.3s;
         border-radius: 5px;
-        overflow: hidden;
+        // overflow: hidden;
 
         .stats {
             grid-template-columns: repeat(2, 50%);
@@ -120,16 +121,16 @@ const props = defineProps({
         grid-area: 1 / 1;
         align-self: start;
         z-index: 1000;
-        transition: 0.3s;
+        transition: 0.5s;
         cursor: pointer;
         // display: none;
 
         img {
             border-radius: 5px;
-
+            transition: 0.5s;
             &:hover {
                 border-radius: 5px 0 0 5px;
-                transition: 0.3s;
+                transition: 0.5s;
             }
         }
     }
