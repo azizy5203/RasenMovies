@@ -1,24 +1,28 @@
 <script>
+import Card1 from '~~/components/Card.vue';
 export default {
-  data() {
-    return {};
-  },
+    data() {
+        return {};
+    },
+    components: { Card1 }
 };
 </script>
 
 <template>
   <div>
     <h1>Home index</h1>
-    <nuxt-link class="abt" to="/about">about</nuxt-link>
-    <nuxt-link to="/signup">signup</nuxt-link>
+    <Button text='sign up'/>
+    <card/>
   </div>
 </template>
 
 <style lang="scss" scoped>
 *{
-  color:red
+  box-sizing: border-box;
 }
-.abt{
-  margin: 1rem;
+
+h1{
+  color: white;
 }
+
 </style>
