@@ -24,7 +24,7 @@ onMounted(() => {
                 <h4 class="logo"><span>Rasen</span>Movies</h4>
                 <div class="d-flex gap-4">
                     <nuxt-link
-                        to="/signup"
+                        to="/about"
                         class="d-none d-md-inline-block fs-6 mt-2 link-light fw-bold text-decoration-none"
                         >login</nuxt-link
                     >
