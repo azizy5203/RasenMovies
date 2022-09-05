@@ -29,8 +29,8 @@ onMounted(() => {
                         >login</nuxt-link
                     >
                     <nuxt-link to="/signup">
-                        <button class="btn rounded-pill fw-bold">
-                            signup
+                        <button class="btn-sm rounded-pill fw-bold fs-6 px-3 mt-2">
+                            sign up
                         </button></nuxt-link
                     >
                 </div>
@@ -90,10 +90,12 @@ onMounted(() => {
             button {
                 background-color: $accent;
                 color: white;
+                border: 1px solid transparent;
                 &:hover {
                     border-color: $accent;
                     color: $accent;
                     background: none;
+                    border: 1px solid $accent;
                 }
             }
         }
