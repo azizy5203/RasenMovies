@@ -28,11 +28,9 @@ onMounted(() => {
                         class="d-none d-md-inline-block fs-6 mt-2 link-light fw-bold text-decoration-none"
                         >login</nuxt-link
                     >
-                    <nuxt-link to="/signup">
-                        <button class="btn-sm rounded-pill fw-bold fs-6 px-3 mt-2">
-                            sign up
-                        </button></nuxt-link
-                    >
+                    <button class="btn-sm rounded-pill fw-bold fs-6 px-3 mt-2">
+                        <nuxt-link to="/signup" class="text-white text-decoration-none">sign up</nuxt-link>
+                        </button>
                 </div>
             </div>
             <section class="typo text-center">
