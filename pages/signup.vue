@@ -1,5 +1,8 @@
 <script setup lang="ts">
+const router = useRouter()
+
 const passwordVisible = ref(false);
+
 
 const togglePassword = () => {
     passwordVisible.value = !passwordVisible.value;

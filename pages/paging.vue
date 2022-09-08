@@ -1,14 +1,18 @@
 <script setup>
 import axios from "axios";
+import VPagination from "@hennge/vue3-pagination";
+import "@hennge/vue3-pagination/dist/vue3-pagination.css";
 const moviesList = ref([]);
 const errs = ref();
 const page = ref(1);
+const totalPages = ref(15); // init total pages number to view default number of pages
 onMounted(() => {
     axios(
         `https://api.themoviedb.org/3/movie/now_playing?api_key=37ed43a4f8eaa2abd75f9283692947bc&language=en-US&page=${page.value}`
     ).then(
         ({ data }) => {
             moviesList.value = data.results;
+            totalPages.value = data.total_pages;
         },
         (err) => {
             errs.value = err;
@@ -31,15 +35,21 @@ const loadMore = async () => {
         }
     );
 };
+
+const handleChange = () => {
+    console.log("page", page.value);
+};
 </script>
 
 <template>
     <div>
-
+        <!-- Hero Section -->
         <section class="hero">
             <div class="background h-100"></div>
             <div class="content d-flex flex-column gap-5">
-                <div class="header container d-flex justify-content-between p-4">
+                <div
+                    class="header container d-flex justify-content-between p-4"
+                >
                     <h4 class="logo"><span>Rasen</span>Movies</h4>
                     <div class="d-flex gap-4">
                         <nuxt-link
@@ -47,7 +57,9 @@ const loadMore = async () => {
                             class="d-none d-md-inline-block fs-6 mt-2 link-light fw-bold text-decoration-none"
                             >login</nuxt-link
                         >
-                        <button class="btn-sm rounded-pill fw-bold fs-6 px-3 mt-2">
+                        <button
+                            class="btn-sm rounded-pill fw-bold fs-6 px-3 mt-2"
+                        >
                             <nuxt-link
                                 to="/signup"
                                 class="text-white text-decoration-none"
@@ -62,7 +74,8 @@ const loadMore = async () => {
                 </section>
             </div>
         </section>
-    
+
+        <!-- Main Section -->
         <main class="container mt-5 mb-5">
             <h1 class="text-light mb-5">In Cenimas:</h1>
             <div class="cards">
@@ -78,17 +91,15 @@ const loadMore = async () => {
                     :path="movie.poster_path"
                 />
             </div>
-    
-            <div class="load-more-container mt-5">
-                <hr class="opacity-100" />
-                <div
-                    @click="loadMore()"
-                    class="load-more d-flex gap-3 justify-content-center align-items-center"
-                >
-                    <i class="bi bi-cast fs-4"></i>
-                    <span class="fs-5 fw-semibold">load more</span>
-                </div>
-                <hr class="opacity-100" />
+
+            <div class="mt-5 paginationContainer">
+                <VPagination
+                    v-model="page"
+                    :pages="totalPages"
+                    :range-size="1"
+                    active-color="#F2008C"
+                    @update:modelValue="handleChange"
+                />
             </div>
         </main>
     </div>
@@ -149,27 +160,19 @@ const loadMore = async () => {
         }
     }
 }
-.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    // grid-template-rows: repeat(3,1fr);
-    column-gap: 1rem;
-    row-gap: 2rem;
-}
+main {
+    .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        column-gap: 1rem;
+        row-gap: 2rem;
+    }
 
-.load-more-container {
-    display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
-    color: $accent;
-    .load-more {
-        cursor: pointer;
-        justify-self: center;
-        & > * {
-            transition: 0.3s;
-        }
-        &:hover > * {
-            transition: 0.3s;
-            color: antiquewhite;
+    .paginationContainer{
+        display: grid;
+        .Pagination{
+            justify-self: center;
+            align-self: center;
         }
     }
 }
