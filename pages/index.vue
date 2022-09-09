@@ -34,61 +34,67 @@ const loadMore = async () => {
 </script>
 
 <template>
-    <section class="hero">
-        <div class="background h-100"></div>
-        <div class="content d-flex flex-column gap-5">
-            <div class="header container d-flex justify-content-between p-4">
-                <h4 class="logo"><span>Rasen</span>Movies</h4>
-                <div class="d-flex gap-4">
-                    <nuxt-link
-                        to="/"
-                        class="d-none d-md-inline-block fs-6 mt-2 link-light fw-bold text-decoration-none"
-                        >login</nuxt-link
-                    >
-                    <button class="btn-sm rounded-pill fw-bold fs-6 px-3 mt-2">
+    <div>
+        <section class="hero">
+            <div class="background h-100"></div>
+            <div class="content d-flex flex-column gap-5">
+                <div
+                    class="header container d-flex justify-content-between p-4"
+                >
+                    <h4 class="logo"><span>Rasen</span>Movies</h4>
+                    <div class="d-flex gap-4">
                         <nuxt-link
-                            to="/signup"
-                            class="text-white text-decoration-none"
-                            >sign up</nuxt-link
+                            to="/"
+                            class="d-none d-md-inline-block fs-6 mt-2 link-light fw-bold text-decoration-none"
+                            >login</nuxt-link
                         >
-                    </button>
+                        <button
+                            class="btn-sm rounded-pill fw-bold fs-6 px-3 mt-2"
+                        >
+                            <nuxt-link
+                                to="/signup"
+                                class="text-white text-decoration-none"
+                                >sign up</nuxt-link
+                            >
+                        </button>
+                    </div>
                 </div>
+                <section class="typo text-center">
+                    <h1>Everything You <span>need</span> to know</h1>
+                    <h1>Is <span>here</span></h1>
+                </section>
             </div>
-            <section class="typo text-center">
-                <h1>Everything You <span>need</span> to know</h1>
-                <h1>Is <span>here</span></h1>
-            </section>
-        </div>
-    </section>
+        </section>
 
-    <main class="container mt-5 mb-5">
-        <h1 class="text-light mb-5">In Cenimas:</h1>
-        <div class="cards">
-            <card
-                v-for="(movie, index) in moviesList"
-                :key="index"
-                :title="movie.original_title"
-                :release="movie.release_date"
-                duration="180 mins"
-                revenue="$40 M"
-                :overview="movie.overview"
-                :rating="movie.vote_average"
-                :path="movie.poster_path"
-            />
-        </div>
-
-        <div class="load-more-container mt-5">
-            <hr class="opacity-100" />
-            <div
-                @click="loadMore()"
-                class="load-more d-flex gap-3 justify-content-center align-items-center"
-            >
-                <i class="bi bi-cast fs-4"></i>
-                <span class="fs-5 fw-semibold">load more</span>
+        <main class="container mt-5 mb-5">
+            <h1 class="text-light mb-5">In Cenimas:</h1>
+            <div class="cards">
+                <card
+                    v-for="(movie, index) in moviesList"
+                    :key="index"
+                    :title="movie.original_title"
+                    :release="movie.release_date"
+                    duration="180 mins"
+                    revenue="$40 M"
+                    :overview="movie.overview"
+                    :rating="movie.vote_average"
+                    :path="movie.poster_path"
+                />
             </div>
-            <hr class="opacity-100" />
-        </div>
-    </main>
+
+            <div class="load-more-container mt-5">
+                <hr class="opacity-100" />
+                <div
+                    @click="loadMore()"
+                    class="load-more d-flex gap-3 justify-content-center align-items-center"
+                >
+                    <i class="bi bi-cast fs-4"></i>
+                    <span class="fs-5 fw-semibold">load more</span>
+                </div>
+                <hr class="opacity-100" />
+            </div>
+        </main>
+    </div>
 </template>
 
 <style lang="scss" scoped>
