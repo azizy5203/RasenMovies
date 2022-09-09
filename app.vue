@@ -40,12 +40,30 @@ useHead({
 </template>
 
 <style lang="scss">
+@use "./sass/colors" as *;
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
-
 * {
     font-family: "Ubuntu", sans-serif;
 }
 body {
     background-color: #0e1233;
+    /* width */
+    &::-webkit-scrollbar {
+        width: 0.5rem;
+        height: 1rem;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background-color: #f1f1f1;
+        
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background-color: $accent;
+        border-radius: 1rem;
+    }
+
 }
 </style>
