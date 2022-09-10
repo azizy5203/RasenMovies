@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import About from "./pages/about.vue";
-import { useUserStore } from "./store/UserStore";
+// import About from "./pages/about.vue";
+// import { useUserStore } from "./store/UserStore";
 
 const router = useRouter();
-const store = useUserStore();
-let user = store.user;
+// const store = useUserStore();
+// let user = store.user;
 
 useHead({
     title: "Rasen Movies",
