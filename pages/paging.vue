@@ -41,7 +41,6 @@ const handleChange = () => {
         `https://api.themoviedb.org/3/movie/now_playing?api_key=37ed43a4f8eaa2abd75f9283692947bc&language=en-US&page=${page.value}`
     ).then(
         ({ data }) => {
-            console.log(data.results);
             moviesList.value = data.results;
         },
         (err) => {
@@ -112,7 +111,7 @@ const handleChange = () => {
                 />
             </div>
 
-            <div class="mt-5 paginationContainer">
+            <div class="mt-5 paginationContainer p-3 rounded-pill">
                 <VPagination
                     v-model="page"
                     :pages="totalPages"
