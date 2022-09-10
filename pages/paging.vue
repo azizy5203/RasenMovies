@@ -37,6 +37,17 @@ const loadMore = async () => {
 };
 
 const handleChange = () => {
+    axios(
+        `https://api.themoviedb.org/3/movie/now_playing?api_key=37ed43a4f8eaa2abd75f9283692947bc&language=en-US&page=${page.value}`
+    ).then(
+        ({ data }) => {
+            console.log(data.results);
+            moviesList.value = data.results;
+        },
+        (err) => {
+            errs.value.push(...err);
+        }
+    );
     console.log("page", page.value);
 };
 </script>
@@ -78,6 +89,15 @@ const handleChange = () => {
         <!-- Main Section -->
         <main class="container mt-5 mb-5">
             <h1 class="text-light mb-5">In Cenimas:</h1>
+            <div class="mb-5 paginationContainer  p-3 rounded-pill">
+                <VPagination
+                    v-model="page"
+                    :pages="totalPages"
+                    :range-size="1"
+                    active-color="#F2008C"
+                    @update:modelValue="handleChange"
+                />
+            </div>
             <div class="cards">
                 <card
                     v-for="(movie, index) in moviesList"
@@ -166,10 +186,14 @@ main {
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         column-gap: 1rem;
         row-gap: 2rem;
+        transition: 0.3s all;
     }
 
     .paginationContainer{
         display: grid;
+        border: 1px solid $accent;
+        width: fit-content;
+        margin: auto;
         .Pagination{
             justify-self: center;
             align-self: center;

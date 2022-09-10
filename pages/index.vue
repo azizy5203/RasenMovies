@@ -35,11 +35,12 @@ const loadMore = async () => {
 
 <template>
     <div>
-
         <section class="hero">
             <div class="background h-100"></div>
             <div class="content d-flex flex-column gap-5">
-                <div class="header container d-flex justify-content-between p-4">
+                <div
+                    class="header container d-flex justify-content-between p-4"
+                >
                     <h4 class="logo"><span>Rasen</span>Movies</h4>
                     <div class="d-flex gap-4">
                         <nuxt-link
@@ -47,7 +48,9 @@ const loadMore = async () => {
                             class="d-none d-md-inline-block fs-6 mt-2 link-light fw-bold text-decoration-none"
                             >login</nuxt-link
                         >
-                        <button class="btn-sm rounded-pill fw-bold fs-6 px-3 mt-2">
+                        <button
+                            class="btn-sm rounded-pill fw-bold fs-6 px-3 mt-2"
+                        >
                             <nuxt-link
                                 to="/signup"
                                 class="text-white text-decoration-none"
@@ -62,7 +65,7 @@ const loadMore = async () => {
                 </section>
             </div>
         </section>
-    
+
         <main class="container mt-5 mb-5">
             <h1 class="text-light mb-5">In Cenimas:</h1>
             <div class="cards">
@@ -78,7 +81,7 @@ const loadMore = async () => {
                     :path="movie.poster_path"
                 />
             </div>
-    
+
             <div class="load-more-container mt-5">
                 <hr class="opacity-100" />
                 <div
@@ -149,6 +152,7 @@ const loadMore = async () => {
         }
     }
 }
+
 .cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));

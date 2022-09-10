@@ -17,7 +17,7 @@ const togglePassword = () => {
                     <span class="h1">Rasen</span>
                     <span class="h1 text-white">Movies</span>
                 </div>
-                <div class="row signup-controls px-5">
+                <div class="row signup-controls px-5" netlify>
                     <form class="d-grid gap-4">
                         <div class="form-floating">
                             <input
