@@ -1,16 +1,5 @@
 <script>
-import axios from "axios";
-export default {
-  data() {
-    return {};
-  },
-  async created() {
-    await axios("https://jsonplaceholder.typicode.com/users").then(
-      ({ data }) => console.log("data:", data),
-      (err) => console.log("err", err)
-    );
-  },
-};
+
 </script>
 
 <template>
