@@ -10,22 +10,6 @@ export default defineNuxtConfig({
             FIREBASE_API_KEY: process.env.FIREBASE_API_KEY
         }
     },
-    // buildModules: [
-    //     [
-    //         '@pinia/nuxt',
-    //         {
-    //             autoImports: [
-    //                 // automatically imports `usePinia()`
-    //                 'defineStore',
-    //                 // automatically imports `usePinia()` as `usePiniaStore()`
-    //                 ['defineStore', 'definePiniaStore'],
-    //             ],
-    //         },
-
-    //     ],
-    // ],
-    // "types": [
-    //     "@pinia/nuxt"
-    // ]
+    // npm i @pinia/nuxt
 
 })
