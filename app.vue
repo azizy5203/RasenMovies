@@ -10,8 +10,8 @@ useHead({
   title: "Rasen Movies",
   meta: [
     { name: "description", content: "Box Office latest rankings and reviews" },
-    { name: "twitter:image", content: "./assets/HeroCropped.png" },
-    { property: "og:image", content: "./assets/HeroCropped.png" },
+    { name: "twitter:image", content: "https://raw.githubusercontent.com/azizy5203/RasenMovies/main/assets/HeroCropped.png" },
+    { property: "og:image", content: "https://raw.githubusercontent.com/azizy5203/RasenMovies/main/assets/HeroCropped.png" },
   ],
   link: [
     {
