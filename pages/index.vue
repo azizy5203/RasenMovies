@@ -145,7 +145,7 @@ const loadMore = async () => {
         margin-top: 7rem;
       }
       h1 {
-        font-size: 5ch;
+        font-size: 4.5rem;
         font-weight: 700;
       }
       color: whitesmoke;
@@ -166,6 +166,12 @@ const loadMore = async () => {
 @media (max-width: 390px) {
   .cards {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+  .typo{
+    h1 {
+        font-size: 5ch;
+       
+      }
   }
 }
 
