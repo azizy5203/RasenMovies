@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // import About from "./pages/about.vue";
 // import { useUserStore } from "./store/UserStore";
-
+import 'animate.css'
 const router = useRouter();
 // const store = useUserStore();
 // let user = store.user;
