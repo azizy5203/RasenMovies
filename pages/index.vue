@@ -167,11 +167,10 @@ const loadMore = async () => {
   .cards {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
-  .typo{
+  .typo {
     h1 {
-        font-size: 5ch;
-       
-      }
+      font-size: 7ch !important;
+    }
   }
 }
 
