@@ -106,9 +106,9 @@ const loadMore = async () => {
   height: 100vh;
   display: grid;
   .background {
-    z-index: -1;
+    z-index: 1;
     grid-area: 1/1;
-    background-image: url("@/assets/hero.jpg");
+    background-image: url("../assets/hero.jpg");
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
