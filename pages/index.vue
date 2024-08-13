@@ -1,37 +1,36 @@
 <script setup>
-import axios from "axios";
-// import 'animate.css'
-const moviesList = ref([]);
-const errs = ref();
-const page = ref(1);
-onMounted(() => {
-  axios(
-    `https://api.themoviedb.org/3/movie/now_playing?api_key=37ed43a4f8eaa2abd75f9283692947bc&language=en-US&page=${page.value}`
-  ).then(
-    ({ data }) => {
-      moviesList.value = data.results;
-    },
-    (err) => {
-      errs.value = err;
-    }
-  );
-});
+  import axios from "axios";
+  // import 'animate.css'
+  const moviesList = ref([]);
+  const errs = ref();
+  const page = ref(1);
+  onMounted(() => {
+    axios(
+      `https://api.themoviedb.org/3/discover/movie?api_key=37ed43a4f8eaa2abd75f9283692947bc&with_genres=16&language=en-US&page=${page.value}`
+    ).then(
+      ({ data }) => {
+        moviesList.value = data.results;
+      },
+      (err) => {
+        errs.value = err;
+      }
+    );
+  });
 
-const loadMore = async () => {
-  page.value = unref(page) + 1;
-  console.table(page);
-  axios(
-    `https://api.themoviedb.org/3/movie/now_playing?api_key=37ed43a4f8eaa2abd75f9283692947bc&language=en-US&page=${page.value}`
-  ).then(
-    ({ data }) => {
-      console.log(data.results);
-      moviesList.value.push(...data.results);
-    },
-    (err) => {
-      errs.value.push(...err);
-    }
-  );
-};
+  const loadMore = async () => {
+    page.value = unref(page) + 1;
+    axios(
+      `https://api.themoviedb.org/3/discover/movie?api_key=37ed43a4f8eaa2abd75f9283692947bc&with_genres=16&language=en-US&page=${page.value}`
+    ).then(
+      ({ data }) => {
+        console.log(data.results);
+        moviesList.value.push(...data.results);
+      },
+      (err) => {
+        errs.value.push(...err);
+      }
+    );
+  };
 </script>
 
 <template>
@@ -50,9 +49,10 @@ const loadMore = async () => {
               >login</nuxt-link
             >
             <button
-              class="btn-sm rounded-pill fw-bold fs-6 px-3 mt-2 animate__animated animate__slideInDown"
-            >
-              <nuxt-link to="/signup" class="text-white text-decoration-none"
+              class="btn-sm rounded-pill fw-bold fs-6 px-3 mt-2 animate__animated animate__slideInDown">
+              <nuxt-link
+                to="/signup"
+                class="text-white text-decoration-none"
                 >sign up</nuxt-link
               >
             </button>
@@ -77,16 +77,14 @@ const loadMore = async () => {
           revenue="$40 M"
           :overview="movie.overview"
           :rating="movie.vote_average"
-          :path="movie.poster_path"
-        />
+          :path="movie.poster_path" />
       </div>
 
       <div class="load-more-container mt-5">
         <hr class="opacity-100" />
         <div
           @click="loadMore()"
-          class="load-more d-flex gap-3 justify-content-center align-items-center"
-        >
+          class="load-more d-flex gap-3 justify-content-center align-items-center">
           <i class="bi bi-cast fs-4"></i>
           <span class="fs-5 fw-semibold">load more</span>
         </div>
@@ -97,97 +95,97 @@ const loadMore = async () => {
 </template>
 
 <style lang="scss" scoped>
-@use "@/sass/colors" as *;
-* {
-  box-sizing: border-box;
-}
-
-.hero {
-  height: 100vh;
-  display: grid;
-  .background {
-    z-index: 1;
-    grid-area: 1/1;
-    background-image: url("../assets/hero.jpg");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    filter: blur(5px);
+  @use "@/assets/sass/colors" as *;
+  * {
+    box-sizing: border-box;
   }
-  .content {
-    grid-area: 1/1;
-    z-index: 100;
-    .header {
-      .logo {
-        color: white;
+
+  .hero {
+    height: 100vh;
+    display: grid;
+    .background {
+      z-index: 1;
+      grid-area: 1/1;
+      background-image: url("../assets/hero.jpg");
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      filter: blur(5px);
+    }
+    .content {
+      grid-area: 1/1;
+      z-index: 100;
+      .header {
+        .logo {
+          color: white;
+          span {
+            color: $accent;
+          }
+        }
+        button {
+          background-color: $accent;
+          color: white;
+          border: 1px solid transparent;
+          &:hover {
+            border-color: $accent;
+            color: $accent;
+            background: none;
+            border: 1px solid $accent;
+          }
+        }
+      }
+      .typo {
+        margin: 0 auto;
+        // align-self: center;
+        // justify-self: center;
+
+        :first-child {
+          margin-top: 7rem;
+        }
+        h1 {
+          font-size: 4.5rem;
+          font-weight: 700;
+        }
+        color: whitesmoke;
         span {
           color: $accent;
         }
       }
-      button {
-        background-color: $accent;
-        color: white;
-        border: 1px solid transparent;
-        &:hover {
-          border-color: $accent;
-          color: $accent;
-          background: none;
-          border: 1px solid $accent;
-        }
-      }
+    }
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    // grid-template-rows: repeat(3,1fr);
+    column-gap: 1rem;
+    row-gap: 2rem;
+  }
+  @media (max-width: 390px) {
+    .cards {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
     .typo {
-      margin: 0 auto;
-      // align-self: center;
-      // justify-self: center;
-
-      :first-child {
-        margin-top: 7rem;
-      }
       h1 {
-        font-size: 4.5rem;
-        font-weight: 700;
-      }
-      color: whitesmoke;
-      span {
-        color: $accent;
+        font-size: 7ch !important;
       }
     }
   }
-}
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  // grid-template-rows: repeat(3,1fr);
-  column-gap: 1rem;
-  row-gap: 2rem;
-}
-@media (max-width: 390px) {
-  .cards {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  }
-  .typo {
-    h1 {
-      font-size: 7ch !important;
+  .load-more-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    color: $accent;
+    .load-more {
+      cursor: pointer;
+      justify-self: center;
+      & > * {
+        transition: 0.3s;
+      }
+      &:hover > * {
+        transition: 0.3s;
+        color: antiquewhite;
+      }
     }
   }
-}
-
-.load-more-container {
-  display: grid;
-  grid-template-columns: 1fr 3fr 1fr;
-  color: $accent;
-  .load-more {
-    cursor: pointer;
-    justify-self: center;
-    & > * {
-      transition: 0.3s;
-    }
-    &:hover > * {
-      transition: 0.3s;
-      color: antiquewhite;
-    }
-  }
-}
 </style>
